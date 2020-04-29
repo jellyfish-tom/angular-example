@@ -1,0 +1,34 @@
+<div class="dialog" mat-dialog-content>
+  <p>Provide patients quantities</p>
+  <mat-form-field *ngFor="let disease of diseasesRegister">
+    <mat-label>{{ disease.name }}</mat-label>
+    <input
+      type="number"
+      min="0"
+      max="100"
+      matInput
+      [(ngModel)]="disease.patients"
+      [formControl]="disease.formControl"
+    />
+  </mat-form-field>
+  <p>Choose drugs to apply</p>
+  <mat-form-field>
+    <mat-label>drugs</mat-label>
+    <mat-select [formControl]="drugs" multiple>
+      <mat-option *ngFor="let drug of drugsList" [value]="drug">{{
+        drug.name
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div class="actions" mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button
+    mat-button
+    [disabled]="!dialogValid()"
+    (click)="closeDialog()"
+    cdkFocusInitial
+  >
+    Ok
+  </button>
+</div>

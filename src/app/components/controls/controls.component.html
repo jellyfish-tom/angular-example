@@ -1,0 +1,45 @@
+<button
+  (click)="hospitalService.getData()"
+  mat-button
+  mat-flat-button
+  color="primary"
+>
+  Fetch data
+</button>
+<div class="data-container">
+  <div>
+    <div class="list-header">Drugs:</div>
+    <drugs-list [drugs]="hospitalService.drugs | async"></drugs-list>
+  </div>
+  <div>
+    <div class="list-header">Patients:</div>
+    <patients-list
+      [patients]="hospitalService.patients | async"
+    ></patients-list>
+  </div>
+</div>
+<button
+  (click)="hospitalService.applyDrugs()"
+  mat-button
+  mat-flat-button
+  color="accent"
+  [disabled]="applyDrugsButtonDisabled()"
+>
+  Apply drugs
+</button>
+<button
+  (click)="openManualInputDialog()"
+  mat-button
+  mat-icon-button
+  aria-label="Input own data"
+  matTooltip="Input own data"
+>
+  <img src="assets/edit-black.svg" />
+</button>
+<mat-slide-toggle
+  labelPosition="after"
+  (click)="autofetchService.toggleAutoFetch()"
+  matTooltip="Auto fetch every 30 seconds"
+  aria-label="Auto fetch every 30 seconds"
+>
+</mat-slide-toggle>

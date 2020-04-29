@@ -1,0 +1,108 @@
+<table
+  mat-table
+  #table
+  appMatSortMultiple
+  [dataSource]="hospitalService.historicReports"
+>
+  <ng-container matColumnDef="empty">
+    <th mat-header-cell *matHeaderCellDef colspan="1"></th>
+  </ng-container>
+  <ng-container matColumnDef="prePatientsHeader">
+    <th mat-header-cell *matHeaderCellDef colspan="5">
+      Pre Treatment Patients
+    </th>
+  </ng-container>
+  <ng-container matColumnDef="postPatientsHeader">
+    <th mat-header-cell *matHeaderCellDef colspan="5">
+      Post Treatment Patients
+    </th>
+  </ng-container>
+  <ng-container matColumnDef="preHealthy">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Healthy">H</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.preTreatmentPatients.H }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="preFever">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Fever">F</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.preTreatmentPatients.F }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="preDiabetic">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Diabetic">D</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.preTreatmentPatients.D }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="preTuberculosis">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Tuberculosis">T</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.preTreatmentPatients.T }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="preDead">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Dead">X</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.preTreatmentPatients.X }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="drugs">
+    <th mat-header-cell class="drugs" *matHeaderCellDef>Drugs</th>
+    <td
+      mat-cell
+      class="drugs"
+      *matCellDef="let element"
+      [matTooltip]="getDrugsTooltip(element.drugs)"
+    >
+      {{ element.drugs.join(", ") }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="postHealthy">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Healthy">H</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.postTreatmentPatients.H }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="postFever">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Fever">F</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.postTreatmentPatients.F }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="postDiabetic">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Diabetic">D</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.postTreatmentPatients.D }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="postTuberculosis">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Tuberculosis">T</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.postTreatmentPatients.T }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="postDead">
+    <th mat-header-cell *matHeaderCellDef matTooltip="Dead">X</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.postTreatmentPatients.X }}
+    </td>
+  </ng-container>
+
+  <tr
+    class="header unstyled"
+    mat-header-row
+    *matHeaderRowDef="
+      ['prePatientsHeader', 'empty', 'postPatientsHeader'];
+      sticky: true
+    "
+  ></tr>
+  <tr
+    class="header"
+    mat-header-row
+    *matHeaderRowDef="displayedColumns; sticky: true"
+  ></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

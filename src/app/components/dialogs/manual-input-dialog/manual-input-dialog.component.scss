@@ -1,0 +1,19 @@
+div.dialog {
+  max-width: 500px;
+
+  mat-form-field {
+    margin: 5px 10px;
+  }
+
+  p {
+    width: 100%;
+    display: block;
+    background: lightpink;
+    padding: 5px;
+    color: white;
+  }
+}
+
+div.actions {
+  justify-content: flex-end;
+}

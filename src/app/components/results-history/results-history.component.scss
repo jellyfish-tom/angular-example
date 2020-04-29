@@ -1,0 +1,51 @@
+:host {
+  width: 100%;
+  height: calc(100vh - 85px);
+  max-height: 572px;
+  display: flex;
+  background: white;
+  overflow-y: scroll;
+
+  table {
+    width: 100%;
+
+    th,
+    td {
+      text-align: center;
+      padding: 0;
+      overflow: hidden;
+      width: 50px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    tr.mat-header-row {
+      height: 46px;
+      transition: all 1s;
+
+      &:not(.header):hover {
+        background: #f2f2f2;
+        cursor: pointer;
+      }
+    }
+
+    tr:not(.unstyled) {
+      td.drugs,
+      th.drugs {
+        background: lightpink;
+        margin-right: 20px;
+        padding-right: 0;
+        flex: 1;
+        text-align: center;
+        justify-content: center;
+        padding-left: 0;
+        color: white;
+      }
+
+      td:last-of-type,
+      th:last-of-type {
+        padding-right: 0;
+      }
+    }
+  }
+}
